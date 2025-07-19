@@ -734,28 +734,23 @@ public struct ChatQuery: Equatable, Codable, Streamable, Sendable {
             public struct File: Codable, Hashable, Sendable {
                 /// The base64 encoded file data, used when passing the file to the model as a string.
                 public let fileData: String?
-                /// The ID of an uploaded file to use as input.
-                public let fileId: String?
                 /// The name of the file, used when passing the file to the model as a string.
                 public let filename: String?
 
-                public init(fileData: String? = nil, fileId: String? = nil, filename: String? = nil) {
+                public init(fileData: String? = nil, filename: String? = nil) {
                     self.fileData = fileData
-                    self.fileId = fileId
                     self.filename = filename
                 }
 
                 public init(data: Data, filename: String) {
                     self.init(
                         fileData: data.base64EncodedString(),
-                        fileId: nil,
                         filename: filename
                     )
                 }
 
                 public enum CodingKeys: String, CodingKey {
                     case fileData = "file_data"
-                    case fileId = "file_id"
                     case filename
                 }
             }
