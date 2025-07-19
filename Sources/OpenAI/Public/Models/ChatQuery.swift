@@ -728,7 +728,7 @@ public struct ChatQuery: Equatable, Codable, Streamable, Sendable {
 
             public init(file: File) {
                 self.file = file
-                self.type = "file"
+                self.type = "input_file"
             }
 
             public struct File: Codable, Hashable, Sendable {
